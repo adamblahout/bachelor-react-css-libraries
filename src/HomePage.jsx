@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Game from "./game";
 import Filter from "./Filter";
+import { Row } from "react-bootstrap";
 
 const HomePage = () => {
   const [hry, setAllGames] = useState([]);
@@ -17,14 +18,16 @@ const HomePage = () => {
     }
   }, [filter, hry]);
   return (
-    <div>
+    <Row className="justify-content-center">
       <Filter setFilter={setFilter} setAllGames={setAllGames} />
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-1">
+      <Row lg={3} md={2} sm={1}>
         {filteredGames.map((hra) => (
-          <Game key={hra.id} hra={hra} />
+          <div key={hra.id} className="text-center">
+            <Game key={hra.id} hra={hra} />
+          </div>
         ))}
-      </div>
-    </div>
+      </Row>
+    </Row>
   );
 };
 

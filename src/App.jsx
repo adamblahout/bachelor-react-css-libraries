@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Details from "./Details";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 import HomePage from "./HomePage";
-import "./style.css";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -15,16 +16,14 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
-    <div>
-      <BrowserRouter>
-        <QueryClientProvider client={queryClient}>
-          <Routes>
-            <Route path="/details/:id" element={<Details />} />
-            <Route path="/" element={<HomePage />} />
-          </Routes>
-        </QueryClientProvider>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <Routes>
+          <Route path="/details/:id" element={<Details />} />
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </QueryClientProvider>
+    </BrowserRouter>
   );
 }
 

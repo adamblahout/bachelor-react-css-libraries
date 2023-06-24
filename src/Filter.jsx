@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useFetchAllGames } from "./fetchAllGames";
 import { useFetchGamesByGenre } from "./fetchGamesByGenre";
+import Form from "react-bootstrap/Form";
 
 const GENRES = [
   "mmorpg",
@@ -61,7 +62,6 @@ function Filter(props) {
   console.log(genre);
 
   console.log(isGamesByGenreLoading, "I am loading");
-
   useEffect(() => {
     if (genre) {
       setAllGames(gamesByGenre);
@@ -83,27 +83,22 @@ function Filter(props) {
     );
   }
   return (
-    <div className="mb-12 mt-12">
-      <div className="block text-center">
-        <div className="mb-4">
-          <label htmlFor="game" className="mr-4">
-            Game
-          </label>
-          <input
-            className=" border-2 border-black rounded-lg"
-            name="game"
-            id="game"
-            type="text"
-            placeholder="název hry"
-            onChange={(e) => setFilter(e.target.value)}
-          />
-        </div>
-        <label htmlFor="genre" id="genre" name="genre" className="mr-4">
+    <div className="justify-content-center d-flex align-items-center">
+      <div className="search-params w-25 text-center">
+        <label htmlFor="game">Game</label>
+        <Form.Control
+          type="text"
+          placeholder="název hry"
+          onChange={(e) => setFilter(e.target.value)}
+        />
+        <label htmlFor="genre" id="genre" name="genre">
           Genre
         </label>
-        <select
-          className=" border-2 border-black rounded-lg"
+        <Form.Select
+          className=" mb-5"
+          aria-label="Default"
           name="genre"
+          id="genre"
           value={genre}
           onChange={(e) => {
             setGenre(e.target.value);
@@ -113,54 +108,10 @@ function Filter(props) {
           {GENRES.map((genre) => (
             <option key={genre}>{genre}</option>
           ))}
-        </select>
+        </Form.Select>
       </div>
     </div>
   );
 }
-/*useEffect(() => {
-    async function requestFilteredGames() {
-      if (genre) {
-        const response = await fetch(
-          `https://www.freetogame.com/api/games?category=${genre}`
-        );
-
-        const data = await response.json();
-        setAllGames(data);
-      } else {
-        const response = await fetch("https://www.freetogame.com/api/games");
-        const data = await response.json();
-        setAllGames(data); // = hry
-      }
-    }
-    requestFilteredGames();
-  }, [genre, setAllGames]);
-
-  return (
-    <div className="search-params">
-      <label htmlFor="game">Game</label>
-      <input
-        type="text"
-        placeholder="název hry"
-        onChange={(e) => setFilter(e.target.value)}
-      />
-      <label htmlFor="genre" id="genre" name="genre">
-        Genre
-      </label>
-      <select
-        name="genre"
-        id="genre"
-        value={genre}
-        onChange={(e) => {
-          setGenre(e.target.value);
-        }}
-      >
-        <option value="">All</option>
-        {GENRES.map((genre) => (
-          <option key={genre}>{genre}</option>
-        ))}
-      </select>
-    </div>
-  );*/
 
 export default Filter;
