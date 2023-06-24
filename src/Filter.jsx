@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { useFetchAllGames } from "./fetchAllGames";
+import { useFetchGamesByGenre } from "./fetchGamesByGenre";
+
 const GENRES = [
   "mmorpg",
   "shooter",
@@ -50,58 +53,66 @@ const GENRES = [
 function Filter(props) {
   const { setFilter, setAllGames } = props;
   const [genre, setGenre] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
 
+  const { data: allGames, isLoading: isAllGamesLoading } = useFetchAllGames();
+  const { data: gamesByGenre, isLoading: isGamesByGenreLoading } =
+    useFetchGamesByGenre(genre);
+
+  console.log(genre);
+
+  console.log(isGamesByGenreLoading, "I am loading");
   useEffect(() => {
-    async function requestFilteredGames() {
-      if (genre) {
-        setIsLoading(true);
-        const response = await fetch(
-          `https://www.freetogame.com/api/games?category=${genre}`
-        );
-
-        const data = await response.json();
-        setAllGames(data);
-        setIsLoading(false);
-      } else {
-        setIsLoading(true);
-        const response = await fetch("https://www.freetogame.com/api/games");
-        const data = await response.json();
-        setAllGames(data); // = hry
-        setIsLoading(false);
-      }
+    if (genre) {
+      setAllGames(gamesByGenre);
+    } else {
+      setAllGames(allGames);
     }
-    requestFilteredGames();
-  }, [genre, setAllGames]);
+  }, [genre, allGames, gamesByGenre, setAllGames]);
 
-  if (isLoading) {
-    <h1>Loading genres ...</h1>;
+  if (isAllGamesLoading) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <h1>Loading...</h1>
+      </div>
+    );
   }
 
   return (
-    <div className="search-params">
-      <label htmlFor="game">Game</label>
-      <input
-        type="text"
-        placeholder="název hry"
-        onChange={(e) => setFilter(e.target.value)}
-      />
-      <label htmlFor="genre" id="genre" name="genre">
-        Genre
-      </label>
-      <select
-        name="genre"
-        id="genre"
-        value={genre}
-        onChange={(e) => {
-          setGenre(e.target.value);
-        }}
-      >
-        <option value="">All</option>
-        {GENRES.map((genre) => (
-          <option key={genre}>{genre}</option>
-        ))}
-      </select>
+    <div>
+      <div>
+        <div>
+          <label htmlFor="game">Game</label>
+          <input
+            name="game"
+            id="game"
+            type="text"
+            placeholder="název hry"
+            onChange={(e) => setFilter(e.target.value)}
+          />
+        </div>
+        <label htmlFor="genre" id="genre" name="genre" className="mr-4">
+          Genre
+        </label>
+        <select
+          name="genre"
+          id="genre"
+          value={genre}
+          onChange={(e) => {
+            setGenre(e.target.value);
+          }}
+        >
+          <option value="">All</option>
+          {GENRES.map((genre) => (
+            <option key={genre}>{genre}</option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 }
