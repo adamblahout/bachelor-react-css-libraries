@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useFetchAllGames } from "./fetchAllGames";
 import { useFetchGamesByGenre } from "./fetchGamesByGenre";
-import Form from "react-bootstrap/Form";
-
+import { MenuItem, Select, TextField, InputLabel, Grid } from "@mui/material";
 const GENRES = [
   "mmorpg",
   "shooter",
@@ -83,35 +82,36 @@ function Filter(props) {
     );
   }
   return (
-    <div className="justify-content-center d-flex align-items-center">
-      <div className="search-params w-25 text-center">
-        <label htmlFor="game">Game</label>
-        <Form.Control
-          type="text"
-          placeholder="název hry"
+    <Grid container style={{ marginLeft: "44%" }}>
+      <Grid item xs={12} sm={6} justifyContent={"center"} alignItems={"center"}>
+        <TextField
+          id="Search Game"
+          label="Search Game"
+          variant="outlined"
           onChange={(e) => setFilter(e.target.value)}
         />
-        <label htmlFor="genre" id="genre" name="genre">
-          Genre
-        </label>
-        <Form.Select
-          className=" mb-5"
-          aria-label="Default"
-          name="genre"
+        <InputLabel id="genre">Žánr</InputLabel>
+        <Select
+          displayEmpty
+          labelId="genre"
           id="genre"
+          label="genre"
           value={genre}
           onChange={(e) => {
             setGenre(e.target.value);
           }}
         >
-          <option value="">All</option>
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
           {GENRES.map((genre) => (
-            <option key={genre}>{genre}</option>
+            <MenuItem value={genre} key={genre}>
+              {genre}
+            </MenuItem>
           ))}
-        </Form.Select>
-      </div>
-    </div>
+        </Select>
+      </Grid>
+    </Grid>
   );
 }
-
 export default Filter;

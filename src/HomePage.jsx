@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Game from "./game";
 import Filter from "./Filter";
-import { Row } from "react-bootstrap";
+import { Grid } from "@mui/material";
 
 const HomePage = () => {
   const [hry, setAllGames] = useState([]);
@@ -18,16 +18,27 @@ const HomePage = () => {
     }
   }, [filter, hry]);
   return (
-    <Row className="justify-content-center">
-      <Filter setFilter={setFilter} setAllGames={setAllGames} />
-      <Row lg={3} md={2} sm={1}>
+    <div>
+      <Grid container alignItems="center" justify="center">
+        <Filter setFilter={setFilter} setAllGames={setAllGames} />
+      </Grid>
+      <Grid
+        container
+        spacing={3}
+        alignItems="center"
+        justify="center"
+        style={{
+          minHeight: "100vh",
+          hover: "background-color:black",
+        }}
+      >
         {filteredGames.map((hra) => (
-          <div key={hra.id} className="text-center">
-            <Game key={hra.id} hra={hra} />
-          </div>
+          <Grid item xs={12} sm={6} md={4} key={hra.id}>
+            <Game hra={hra} />
+          </Grid>
         ))}
-      </Row>
-    </Row>
+      </Grid>
+    </div>
   );
 };
 
