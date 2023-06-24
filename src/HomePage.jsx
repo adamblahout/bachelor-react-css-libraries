@@ -19,7 +19,7 @@ const HomePage = () => {
   return (
     <div>
       <Filter setFilter={setFilter} setAllGames={setAllGames} />
-      <div>
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-1">
         {filteredGames.map((hra) => (
           <Game key={hra.id} hra={hra} />
         ))}

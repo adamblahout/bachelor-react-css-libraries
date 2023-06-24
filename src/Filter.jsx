@@ -61,6 +61,7 @@ function Filter(props) {
   console.log(genre);
 
   console.log(isGamesByGenreLoading, "I am loading");
+
   useEffect(() => {
     if (genre) {
       setAllGames(gamesByGenre);
@@ -68,7 +69,6 @@ function Filter(props) {
       setAllGames(allGames);
     }
   }, [genre, allGames, gamesByGenre, setAllGames]);
-
   if (isAllGamesLoading) {
     return (
       <div
@@ -82,13 +82,15 @@ function Filter(props) {
       </div>
     );
   }
-
   return (
-    <div>
-      <div>
-        <div>
-          <label htmlFor="game">Game</label>
+    <div className="mb-12 mt-12">
+      <div className="block text-center">
+        <div className="mb-4">
+          <label htmlFor="game" className="mr-4">
+            Game
+          </label>
           <input
+            className=" border-2 border-black rounded-lg"
             name="game"
             id="game"
             type="text"
@@ -100,8 +102,8 @@ function Filter(props) {
           Genre
         </label>
         <select
+          className=" border-2 border-black rounded-lg"
           name="genre"
-          id="genre"
           value={genre}
           onChange={(e) => {
             setGenre(e.target.value);
@@ -116,5 +118,49 @@ function Filter(props) {
     </div>
   );
 }
+/*useEffect(() => {
+    async function requestFilteredGames() {
+      if (genre) {
+        const response = await fetch(
+          `https://www.freetogame.com/api/games?category=${genre}`
+        );
+
+        const data = await response.json();
+        setAllGames(data);
+      } else {
+        const response = await fetch("https://www.freetogame.com/api/games");
+        const data = await response.json();
+        setAllGames(data); // = hry
+      }
+    }
+    requestFilteredGames();
+  }, [genre, setAllGames]);
+
+  return (
+    <div className="search-params">
+      <label htmlFor="game">Game</label>
+      <input
+        type="text"
+        placeholder="název hry"
+        onChange={(e) => setFilter(e.target.value)}
+      />
+      <label htmlFor="genre" id="genre" name="genre">
+        Genre
+      </label>
+      <select
+        name="genre"
+        id="genre"
+        value={genre}
+        onChange={(e) => {
+          setGenre(e.target.value);
+        }}
+      >
+        <option value="">All</option>
+        {GENRES.map((genre) => (
+          <option key={genre}>{genre}</option>
+        ))}
+      </select>
+    </div>
+  );*/
 
 export default Filter;

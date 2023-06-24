@@ -24,112 +24,135 @@ function Details() {
   console.log(game.minimum_system_requirements);
   return (
     <div className="game">
-      <h1>{game.title}</h1>
-      <img src={game.thumbnail} alt="obrazek" />
-      <h2>Foto Galerie:</h2>
-      <div>
+      <h1 className="font-bold text-2xl text-center">{game.title}</h1>
+      <img
+        src={game.thumbnail}
+        alt="obrazek"
+        className="mx-auto m-12 w-96 rounded-lg"
+      />
+      <h2 className="text-lg font-bold text-center mb-4">Foto Galerie:</h2>
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-12 ml-5 mr-5">
         {images.map((image) => (
-          <img src={image.image} key={image.id} />
+          <img
+            src={image.image}
+            key={image.id}
+            className="m-auto rounded-lg gap-1 sm:w-1/2 lg:w-auto md:w-auto"
+          />
         ))}
       </div>
-      <div>
-        <div>
+      <div className="detail-games-everything m-12">
+        <div className="grid_for_two grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1">
           <div>
-            <h3>Odkaz na stažení: </h3>
-            <a href={game.game_url}>{game.game_url}</a>
-            <h3>
+            <h3 className="inline font-bold">Odkaz na stažení: </h3>
+            <a href={game.game_url} className="text-blue-500 hover:text-black">
+              {game.game_url}
+            </a>
+            <h3 className=" pb-5 pt-5">
               <strong>Žánr: </strong>
               {game.genre}
             </h3>
-            <h3>
+            <h3 className=" pb-5">
               <strong>Vývojář: </strong>
               {game.developer}
             </h3>
-            <h3>
+            <h3 className=" pb-5">
               <strong>Vydavatel:</strong> {game.publisher}
             </h3>
-            <h3>
+            <h3 className=" pb-5">
               <strong>Podporované OS:</strong> {game.platform}
             </h3>
-            <h3>
+            <h3 className=" pb-5">
               <strong>Datum vydání:</strong> {game.release_date}
             </h3>
           </div>
-          <div className="minimal_requirements">
-            <h3>Minimální systémové požadavky:</h3>
-            <table>
-              <tbody>
-                <tr>
-                  <th>
-                    <strong>Graphics:</strong>
-                  </th>
-                  <td>
-                    {systemRequirements?.graphics ? (
-                      <> {systemRequirements?.graphics} </>
-                    ) : (
-                      "neuvedeno"
-                    )}
-                  </td>
-                </tr>
-
-                <tr>
-                  <th>
-                    <strong>Memory:</strong>
-                  </th>
-                  <td>
-                    {systemRequirements?.memory ? (
-                      <> {systemRequirements?.memory} </>
-                    ) : (
-                      "neuvedeno"
-                    )}
-                  </td>
-                </tr>
-                <tr>
-                  <th>
-                    <strong>OS:</strong>
-                  </th>
-                  <td>
-                    {systemRequirements?.os ? (
-                      <> {systemRequirements?.os} </>
-                    ) : (
-                      "neuvedeno"
-                    )}
-                  </td>
-                </tr>
-                <tr>
-                  <th>
-                    <strong>Processor:</strong>
-                  </th>
-                  <td>
-                    {systemRequirements?.processor ? (
-                      <> {systemRequirements?.processor} </>
-                    ) : (
-                      "neuvedeno"
-                    )}
-                  </td>
-                </tr>
-                <tr>
-                  <th>
-                    <strong>Storage:</strong>
-                  </th>
-                  <td>
-                    {systemRequirements?.storage ? (
-                      <> {systemRequirements?.storage} </>
-                    ) : (
-                      "neuvedeno"
-                    )}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div>
+            <div className="minimal_requirements text-center">
+              <h3 className=" pb-5 font-bold text-lg">
+                Minimální systémové požadavky:
+              </h3>
+              <table className="mx-auto">
+                <div className="graphics">
+                  <tr>
+                    <th className="p-2">
+                      <strong>Graphics:</strong>
+                    </th>
+                    <td>
+                      {systemRequirements?.graphics ? (
+                        <> {systemRequirements?.graphics} </>
+                      ) : (
+                        "neuvedeno"
+                      )}
+                    </td>
+                  </tr>
+                </div>
+                <div className="memory">
+                  <tr>
+                    <th className="p-2">
+                      <strong>Memory:</strong>
+                    </th>
+                    <td>
+                      {systemRequirements?.memory ? (
+                        <> {systemRequirements?.memory} </>
+                      ) : (
+                        "neuvedeno"
+                      )}
+                    </td>
+                  </tr>
+                </div>
+                <div className="operating_system">
+                  <tr>
+                    <th className="p-2">
+                      <strong>OS:</strong>
+                    </th>
+                    <td>
+                      {systemRequirements?.os ? (
+                        <> {systemRequirements?.os} </>
+                      ) : (
+                        "neuvedeno"
+                      )}
+                    </td>
+                  </tr>
+                </div>
+                <div className="Processor">
+                  <tr>
+                    <th className="p-2">
+                      <strong>Processor:</strong>
+                    </th>
+                    <td>
+                      {systemRequirements?.processor ? (
+                        <> {systemRequirements?.processor} </>
+                      ) : (
+                        "neuvedeno"
+                      )}
+                    </td>
+                  </tr>
+                </div>
+                <div className="storage">
+                  <tr>
+                    <th className="p-2">
+                      <strong>Storage:</strong>
+                    </th>
+                    <td>
+                      {systemRequirements?.storage ? (
+                        <> {systemRequirements?.storage} </>
+                      ) : (
+                        "neuvedeno"
+                      )}
+                    </td>
+                  </tr>
+                </div>
+              </table>
+            </div>
           </div>
         </div>
+        <h2 className="font-bold text-lg pt-6 pb-2">Description:</h2>
+        <p>{game.description}</p>
+        <Link to="/">
+          <button className=" rounded-lg p-4 bg-blue-400 hover:opacity-80 float-right mb-6">
+            Zpět
+          </button>
+        </Link>
       </div>
-      <h2>Description:</h2>
-      <p>{game.description}</p>
-      <Link to="/">
-        <button>Zpět</button>
-      </Link>
     </div>
   );
 }
