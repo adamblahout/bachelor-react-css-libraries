@@ -83,14 +83,14 @@ function Filter(props) {
     );
   }
   return (
-    <div className="mb-12 mt-12">
+    <div className="  mb-12 mt-12">
       <div className="block text-center">
         <div className="mb-4">
           <label htmlFor="game" className="mr-4">
             Game
           </label>
           <input
-            className=" border-2 border-black rounded-lg"
+            className=" rounded-lg border-2 border-black"
             name="game"
             id="game"
             type="text"
@@ -102,7 +102,7 @@ function Filter(props) {
           Genre
         </label>
         <select
-          className=" border-2 border-black rounded-lg"
+          className=" rounded-lg border-2 border-black"
           name="genre"
           value={genre}
           onChange={(e) => {

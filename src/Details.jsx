@@ -24,24 +24,24 @@ function Details() {
   console.log(game.minimum_system_requirements);
   return (
     <div className="game">
-      <h1 className="font-bold text-2xl text-center">{game.title}</h1>
+      <h1 className="text-center text-2xl font-bold">{game.title}</h1>
       <img
         src={game.thumbnail}
         alt="obrazek"
-        className="mx-auto m-12 w-96 rounded-lg"
+        className="m-12 mx-auto w-96 rounded-lg"
       />
-      <h2 className="text-lg font-bold text-center mb-4">Foto Galerie:</h2>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-12 ml-5 mr-5">
+      <h2 className="mb-4 text-center text-lg font-bold">Foto Galerie:</h2>
+      <div className="ml-5 mr-5 grid gap-12 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {images.map((image) => (
           <img
             src={image.image}
             key={image.id}
-            className="m-auto rounded-lg gap-1 sm:w-1/2 lg:w-auto md:w-auto"
+            className="m-auto gap-1 rounded-lg sm:w-1/2 md:w-auto lg:w-auto"
           />
         ))}
       </div>
       <div className="detail-games-everything m-12">
-        <div className="grid_for_two grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1">
+        <div className="grid_for_two grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
           <div>
             <h3 className="inline font-bold">Odkaz na stažení: </h3>
             <a href={game.game_url} className="text-blue-500 hover:text-black">
@@ -67,12 +67,13 @@ function Details() {
           </div>
           <div>
             <div className="minimal_requirements text-center">
-              <h3 className=" pb-5 font-bold text-lg">
+              <h3 className="  pb-5 text-lg font-bold">
                 Minimální systémové požadavky:
               </h3>
-              <table className="mx-auto">
-                <div className="graphics">
-                  <tr>
+              <table className="mx-auto table-auto rounded-b-lg rounded-t-lg bg-gray-300">
+                <thead></thead>
+                <tbody className="list-disc rounded-lg [&>*:nth-child(odd)]:bg-gray-400">
+                  <tr className="graphics ">
                     <th className="p-2">
                       <strong>Graphics:</strong>
                     </th>
@@ -84,9 +85,7 @@ function Details() {
                       )}
                     </td>
                   </tr>
-                </div>
-                <div className="memory">
-                  <tr>
+                  <tr className="memory">
                     <th className="p-2">
                       <strong>Memory:</strong>
                     </th>
@@ -98,9 +97,7 @@ function Details() {
                       )}
                     </td>
                   </tr>
-                </div>
-                <div className="operating_system">
-                  <tr>
+                  <tr className="operating_system">
                     <th className="p-2">
                       <strong>OS:</strong>
                     </th>
@@ -112,9 +109,7 @@ function Details() {
                       )}
                     </td>
                   </tr>
-                </div>
-                <div className="Processor">
-                  <tr>
+                  <tr className="Processor">
                     <th className="p-2">
                       <strong>Processor:</strong>
                     </th>
@@ -126,9 +121,7 @@ function Details() {
                       )}
                     </td>
                   </tr>
-                </div>
-                <div className="storage">
-                  <tr>
+                  <tr className="storage rounded-b-lg">
                     <th className="p-2">
                       <strong>Storage:</strong>
                     </th>
@@ -140,15 +133,15 @@ function Details() {
                       )}
                     </td>
                   </tr>
-                </div>
+                </tbody>
               </table>
             </div>
           </div>
         </div>
-        <h2 className="font-bold text-lg pt-6 pb-2">Description:</h2>
+        <h2 className="pb-2 pt-6 text-lg font-bold">Description:</h2>
         <p>{game.description}</p>
         <Link to="/">
-          <button className=" rounded-lg p-4 bg-blue-400 hover:opacity-80 float-right mb-6">
+          <button className=" float-right mb-6 rounded-lg bg-blue-400 p-4 hover:opacity-80">
             Zpět
           </button>
         </Link>
