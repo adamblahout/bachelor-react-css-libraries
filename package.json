@@ -1,39 +1,34 @@
 {
-  "name": "vite-project",
+  "name": "zk",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "proxy": "https://www.freetogame.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@material-ui/styles": "^4.11.5",
-    "@mui/material": "^5.13.5",
+    "@fontsource/roboto": "^5.0.8",
+    "@mui/material": "^5.14.17",
     "@tanstack/react-query": "^4.29.15",
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "http-proxy-middleware": "^2.0.6",
-    "node-fetch": "^3.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.13.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.37",
-    "@types/react-dom": "^18.0.11",
-    "@vitejs/plugin-react-swc": "^3.0.0",
-    "eslint": "^8.38.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-react": "^7.25.3",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react-swc": "^3.3.2",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.3.4",
-    "prettier": "^2.8.8",
-    "vite": "^4.3.9"
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "prettier": "^3.1.0",
+    "vite": "^4.4.5"
   }
 }

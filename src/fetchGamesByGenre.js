@@ -4,7 +4,6 @@ const fetchGamesByGenre = async (genre) => {
   const response = await fetch(
     `https://www.freetogame.com/api/games?category=${genre}`
   );
-
   if (!response.ok) {
     throw new Error(`details/${genre} not ok`);
   }

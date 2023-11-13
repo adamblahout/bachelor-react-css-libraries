@@ -6,7 +6,6 @@ const fetchAllGames = async () => {
   if (!response.ok) {
     throw new Error(`details fetch not ok`);
   }
-
   return response.json();
 };
 

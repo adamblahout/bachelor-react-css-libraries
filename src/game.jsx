@@ -1,26 +1,22 @@
 import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
 import { Grid } from "@mui/material";
-import { makeStyles } from "@material-ui/styles";
-
-const useStyles = makeStyles({
-  hoverEffect: {
-    "&:hover": {
-      opacity: 0.8,
-    },
-  },
-});
+import Box from "@mui/material/Box";
 
 function Game({ hra }) {
-  const classes = useStyles();
   return (
-    <div className={classes.hoverEffect}>
+    <div>
       <Link to={`/details/${hra.id}`}>
         <Typography variant="h4" align="center">
           {hra.title}
 
           <Grid></Grid>
-          <img src={hra.thumbnail} alt={hra.title} />
+          <Box
+            component="img"
+            alt="The house from the offer."
+            src={hra.thumbnail}
+            sx={{ borderRadius: "5%" }}
+          />
         </Typography>
       </Link>
     </div>

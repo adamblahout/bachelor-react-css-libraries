@@ -27,13 +27,10 @@ const HomePage = () => {
         spacing={3}
         alignItems="center"
         justify="center"
-        style={{
-          minHeight: "100vh",
-          hover: "background-color:black",
-        }}
+        sx={{ minHeight: "100vh" }}
       >
         {filteredGames.map((hra) => (
-          <Grid item xs={12} sm={6} md={4} key={hra.id}>
+          <Grid item xs={12} md={6} lg={4} key={hra.id}>
             <Game hra={hra} />
           </Grid>
         ))}

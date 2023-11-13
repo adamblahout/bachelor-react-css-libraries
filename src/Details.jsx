@@ -11,6 +11,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import Box from "@mui/material/Box";
 
 function Details() {
   const { id } = useParams();
@@ -33,7 +34,7 @@ function Details() {
 
   console.log(game.minimum_system_requirements);
   return (
-    <div className="game" style={{ margin: "1em" }}>
+    <Box component="div" className="game" sx={{ margin: "1em" }}>
       <Grid container direction="column" alignItems="center" spacing={2}>
         <Grid item>
           <Typography variant="h3" align="center">
@@ -41,30 +42,25 @@ function Details() {
           </Typography>
         </Grid>
         <Grid item>
-          <img src={game.thumbnail} alt="" style={{ borderRadius: "5%" }} />
+          <Box
+            component="img"
+            alt="The house from the offer."
+            src={game.thumbnail}
+            sx={{ borderRadius: "5%" }}
+          />
         </Grid>
       </Grid>
       <Typography variant="h5" align="center">
-        Fotogalerie
+        Fotogalerie:
       </Typography>
       <Grid container alignItems="center" spacing={2}>
         {images.map((image) => (
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            md={4}
-            key={image.id}
-            style={{ textAlign: "center" }}
-          >
-            <img
+          <Grid item xs={12} sm={6} md={4} key={image.id}>
+            <Box
+              component="img"
+              alt="The house from the offer."
               src={image.image}
-              style={{
-                width: "90%",
-                height: "auto",
-                borderRadius: "5%",
-              }}
-              alt=""
+              sx={{ width: "100%", height: "auto", borderRadius: "5%" }}
             />
           </Grid>
         ))}
@@ -72,7 +68,7 @@ function Details() {
       <Grid container spacing={2} padding={"4em"}>
         <Grid item xs={12} sm={6}>
           <Typography variant="h4">Další informace:</Typography>
-          <Typography variant="h6" style={{ display: "inline" }}>
+          <Typography variant="h6" sx={{ display: "inline" }}>
             {" "}
             <strong>Odkaz na hru:</strong>
           </Typography>
@@ -102,7 +98,7 @@ function Details() {
                 <TableRow></TableRow>
               </TableHead>
               <TableBody>
-                <TableRow style={{}}>
+                <TableRow>
                   <TableCell component="th" scope="row">
                     <Typography variant="h6">Graphics:</Typography>
                   </TableCell>
@@ -169,16 +165,15 @@ function Details() {
       </Grid>
 
       <Typography variant="h3">Description:</Typography>
-      <p style={{ fontSize: "1.5em" }}>{game.description}</p>
+      <Typography variant="p" sx={{ fontSize: "1.5em" }}>
+        {game.description}
+      </Typography>
       <Link to="/">
-        <Button
-          variant="contained"
-          style={{ float: "right", marginBottom: "3em" }}
-        >
-          Hello World
+        <Button variant="contained" sx={{ float: "right", margin: "3em" }}>
+          Zpět
         </Button>
       </Link>
-    </div>
+    </Box>
   );
 }
 

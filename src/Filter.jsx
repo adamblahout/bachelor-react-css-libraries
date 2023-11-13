@@ -71,7 +71,7 @@ function Filter(props) {
   if (isAllGamesLoading) {
     return (
       <div
-        style={{
+        sx={{
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -82,7 +82,7 @@ function Filter(props) {
     );
   }
   return (
-    <Grid container style={{ marginLeft: "44%" }}>
+    <Grid container sx={{ marginLeft: "44%" }}>
       <Grid item xs={12} sm={6} justifyContent={"center"} alignItems={"center"}>
         <TextField
           id="Search Game"
@@ -101,6 +101,7 @@ function Filter(props) {
             setGenre(e.target.value);
           }}
         >
+          <label htmlFor=""></label>
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
