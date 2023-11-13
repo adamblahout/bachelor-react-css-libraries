@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useFetchAllGames } from "./fetchAllGames";
 import { useFetchGamesByGenre } from "./fetchGamesByGenre";
 import { MenuItem, Select, TextField, InputLabel, Grid } from "@mui/material";
+import Box from "@mui/material/Box";
+
 const GENRES = [
   "mmorpg",
   "shooter",
@@ -70,7 +72,8 @@ function Filter(props) {
   }, [genre, allGames, gamesByGenre, setAllGames]);
   if (isAllGamesLoading) {
     return (
-      <div
+      <Box
+        component="div"
         sx={{
           display: "flex",
           alignItems: "center",
@@ -78,7 +81,7 @@ function Filter(props) {
         }}
       >
         <h1>Loading...</h1>
-      </div>
+      </Box>
     );
   }
   return (
