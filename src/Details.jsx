@@ -14,7 +14,6 @@ function Details() {
   }
 
   const images = game.screenshots;
-
   let systemRequirements = game.minimum_system_requirements;
 
   return (
