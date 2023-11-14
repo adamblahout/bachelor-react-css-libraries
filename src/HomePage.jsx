@@ -18,7 +18,7 @@ const HomePage = () => {
     }
   }, [filter, hry]);
   return (
-    <Row className="justify-content-center">
+    <Row className="justify-content-center m-0">
       <Filter setFilter={setFilter} setAllGames={setAllGames} />
       <Row lg={3} md={2} sm={1}>
         {filteredGames.map((hra) => (
