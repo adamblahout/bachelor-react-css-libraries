@@ -1,6 +1,6 @@
-const fetchGameById = async ({ queryKey }) => {
-  const id = queryKey[1];
+import { useQuery } from "@tanstack/react-query";
 
+const fetchGameById = async (id) => {
   const response = await fetch(`https://www.freetogame.com/api/game?id=${id}`);
 
   if (!response.ok) {
@@ -10,4 +10,5 @@ const fetchGameById = async ({ queryKey }) => {
   return response.json();
 };
 
-export default fetchGameById;
+export const useFetchGameById = (id) =>
+  useQuery(["filteredGames", id], () => fetchGameById(id));
