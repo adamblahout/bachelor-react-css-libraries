@@ -55,12 +55,8 @@ function Filter(props) {
   const [genre, setGenre] = useState("");
 
   const { data: allGames, isLoading: isAllGamesLoading } = useFetchAllGames();
-  const { data: gamesByGenre, isLoading: isGamesByGenreLoading } =
+  const { data: gamesByGenre} =
     useFetchGamesByGenre(genre);
-
-  console.log(genre);
-
-  console.log(isGamesByGenreLoading, "I am loading");
 
   useEffect(() => {
     if (genre) {
@@ -118,49 +114,6 @@ function Filter(props) {
     </div>
   );
 }
-/*useEffect(() => {
-    async function requestFilteredGames() {
-      if (genre) {
-        const response = await fetch(
-          `https://www.freetogame.com/api/games?category=${genre}`
-        );
 
-        const data = await response.json();
-        setAllGames(data);
-      } else {
-        const response = await fetch("https://www.freetogame.com/api/games");
-        const data = await response.json();
-        setAllGames(data); // = hry
-      }
-    }
-    requestFilteredGames();
-  }, [genre, setAllGames]);
-
-  return (
-    <div className="search-params">
-      <label htmlFor="game">Game</label>
-      <input
-        type="text"
-        placeholder="název hry"
-        onChange={(e) => setFilter(e.target.value)}
-      />
-      <label htmlFor="genre" id="genre" name="genre">
-        Genre
-      </label>
-      <select
-        name="genre"
-        id="genre"
-        value={genre}
-        onChange={(e) => {
-          setGenre(e.target.value);
-        }}
-      >
-        <option value="">All</option>
-        {GENRES.map((genre) => (
-          <option key={genre}>{genre}</option>
-        ))}
-      </select>
-    </div>
-  );*/
 
 export default Filter;
