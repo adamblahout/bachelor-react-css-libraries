@@ -1,30 +1,25 @@
 import { useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import fetchGameById from "./fetchGameById";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { Row, Image } from "react-bootstrap";
 import { Col } from "react-bootstrap";
+import { useFetchGameById } from "./fetchGameById";
 
 function Details() {
   const { id } = useParams();
-  const results = useQuery(["details", id], fetchGameById);
-  if (results.isLoading) {
+  const { data: game, isLoading } = useFetchGameById(id);
+  if (isLoading) {
     return (
       <div className="loading">
         <h2>Loading...</h2>
       </div>
     );
   }
-  const game = results.data;
-  console.log(game);
-  console.log(game.screenshots.image);
 
   const images = game.screenshots;
 
   let systemRequirements = game.minimum_system_requirements;
 
-  console.log(game.minimum_system_requirements);
   return (
     <div className="game m-5">
       <div className="text-center">

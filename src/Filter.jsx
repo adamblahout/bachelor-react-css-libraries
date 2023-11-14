@@ -56,12 +56,10 @@ function Filter(props) {
   const [genre, setGenre] = useState("");
 
   const { data: allGames, isLoading: isAllGamesLoading } = useFetchAllGames();
-  const { data: gamesByGenre, isLoading: isGamesByGenreLoading } =
+  const { data: gamesByGenre} =
     useFetchGamesByGenre(genre);
 
-  console.log(genre);
 
-  console.log(isGamesByGenreLoading, "I am loading");
   useEffect(() => {
     if (genre) {
       setAllGames(gamesByGenre);
